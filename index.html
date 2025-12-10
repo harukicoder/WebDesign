@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Création de sites web professionnels et e-commerce">
+    <title>Web Design Pro - Offres et Réalisations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. CONFIGURATION GÉNÉRALE --- */
+        :root {
+            --primary: #008060; /* Vert Shopify */
+            --secondary: #f4f6f8; /* Gris très clair */
+            --dark: #1a1a1a;
+            --gray: #666;
+            --bg: #ffffff;
+            --white: #ffffff;
+            --gold: #FFD700;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Titres de section */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        section { padding: 60px 20px; }
+
+        /* --- 2. EN-TÊTE (HEADER) --- */
+        header {
+            background: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        h1 { margin: 0; font-size: 1.8rem; color: var(--primary); letter-spacing: -1px; }
+        .header-subtitle { color: var(--gray); margin-top: 10px; }
+
+
+        /* --- 3. SECTION PORTFOLIO (Version Ultra-Crédible) --- */
+        .portfolio-section { background-color: var(--white); }
+        .portfolio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-item {
+            width: 350px;
+            background: transparent; /* Fond transparent pour laisser la maquette respirer */
+        }
+
+        /* La Magie : Le cadre du navigateur */
+        .browser-frame {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12); /* Ombre portée réaliste */
+            transition: transform 0.3s ease;
+            background: white;
+        }
+        
+        .portfolio-item:hover .browser-frame {
+            transform: translateY(-8px); /* L'effet "flottant" */
+        }
+
+        /* La barre du haut du navigateur */
+        .browser-header {
+            height: 28px;
+            background: #eef1f5;
+            display: flex;
+            align-items: center;
+            padding-left: 12px;
+            gap: 6px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        /* Les petits points Mac/Windows */
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: top; /* Montre le haut de l'image (le header du site) */
+            display: block;
+        }
+
+        .portfolio-info { padding: 20px 5px; text-align: left; }
+        .portfolio-info h3 { margin: 0 0 5px 0; font-size: 1.2rem; font-weight: 700; }
+        .portfolio-cat { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); font-weight: 600; margin-bottom: 10px; display: block;}
+        .portfolio-result { color: var(--primary); font-size: 0.9rem; font-weight: 600; background: #e0f2f1; padding: 5px 10px; border-radius: 4px; display: inline-block; }
+
+
+        /* --- 4. SECTION PRIX --- */
+        .pricing-section { background-color: var(--secondary); }
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            width: 320px;
+            text-align: center;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .popular { border: 2px solid var(--primary); transform: scale(1.05); z-index: 10; }
+        .popular:hover { transform: scale(1.08); }
+        .badge {
+            background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: bold; text-transform: uppercase;
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+        }
+        .price { font-size: 2.5rem; font-weight: 800; margin: 20px 0 5px 0; color: var(--dark); }
+        .period { font-size: 0.9rem; color: var(--gray); }
+        .plan-name { font-size: 1.2rem; font-weight: 600; margin-bottom: 15px; }
+        ul { list-style: none; padding: 0; margin: 30px 0; text-align: left; }
+        li { padding: 8px 0; border-bottom: 1px dashed #eee; font-size: 0.95rem; color: #444; }
+        li::before { content: "✓"; color: var(--primary); font-weight: bold; margin-right: 10px; }
+        li.no { color: #ccc; } li.no::before { content: "×"; color: #ccc; }
+        .btn { display: inline-block; width: 100%; padding: 12px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: 0.2s; box-sizing: border-box; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-outline { border: 2px solid #eee; color: var(--dark); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+
+        /* --- 5. SECTION TÉMOIGNAGES --- */
+        .testimonials-section { background-color: var(--white); }
+        .testi-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .testi-card {
+            background: var(--secondary);
+            padding: 30px;
+            border-radius: 12px;
+            width: 300px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.03);
+            font-size: 0.95rem;
+        }
+        .stars { color: var(--gold); margin-bottom: 15px; letter-spacing: 2px; }
+        .quote { font-style: italic; color: #555; margin-bottom: 20px; }
+        .client-info { font-weight: 700; color: var(--primary); display: flex; align-items: center; }
+        
+        .client-avatar {
+            width: 50px; height: 50px; border-radius: 50%; margin-right: 15px;
+            object-fit: cover; border: 2px solid var(--primary);
+        }
+
+        /* --- 6. FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: #aaa;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+        .footer-cta a { color: var(--primary); text-decoration: none; font-weight: bold; font-size: 1.2rem;}
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>WEB DESIGN PRO</h1>
+        <div class="header-subtitle">Nous créons des sites qui transforment vos visiteurs en clients.</div>
+    </header>
+
+    <section class="portfolio-section">
+        <div class="section-title">Études de Cas</div>
+        <div class="section-subtitle">Voici comment nous avons aidé nos clients à grandir.</div>
+        
+        <div class="portfolio-grid">
+            
+            <div class="portfolio-item">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <div class="dot" style="background:#ff5f57"></div>
+                        <div class="dot" style="background:#ffbd2e"></div>
+                        <div class="dot" style="background:#28c940"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=300&fit=crop" alt="Site Restaurant" class="portfolio-image">
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-cat">Restauration</span>
+                    <h3>Le Gourmet Moderne</h3>
+                    <div class="portfolio-result">📈 +30% de réservations</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <div class="dot" style="background:#ff5f57"></div>
+                        <div class="dot" style="background:#ffbd2e"></div>
+                        <div class="dot" style="background:#28c940"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=500&h=300&fit=crop" alt="Site Cabinet" class="portfolio-image">
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-cat">Services / Légal</span>
+                    <h3>Cabinet Dupont</h3>
+                    <div class="portfolio-result">📅 Gestion d'agenda auto</div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="browser-frame">
+                    <div class="browser-header">
+                        <div class="dot" style="background:#ff5f57"></div>
+                        <div class="dot" style="background:#ffbd2e"></div>
+                        <div class="dot" style="background:#28c940"></div>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&h=300&fit=crop" alt="Site E-commerce" class="portfolio-image">
+                </div>
+                <div class="portfolio-info">
+                    <span class="portfolio-cat">E-Commerce</span>
+                    <h3>Urban Style Paris</h3>
+                    <div class="portfolio-result">🛒 15k€ de ventes / mois</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="section-title">Investissez dans votre Image</div>
+        <div class="section-subtitle">Des tarifs transparents, sans frais cachés.</div>
+
+        <div class="pricing-container">
+            <div class="card">
+                <div class="plan-name">ESSENTIEL</div>
+                <div class="price">490€</div>
+                <div class="period">Paiement unique</div>
+                <ul>
+                    <li>Site One-Page (Vitrine)</li>
+                    <li>Design adapté Mobile</li>
+                    <li>Formulaire de contact</li>
+                    <li>Hébergement inclus (1 an)</li>
+                    <li class="no">Optimisation SEO</li>
+                    <li class="no">Boutique en ligne</li>
+                </ul>
+                <a href="mailto:moi@monemail.com" class="btn btn-outline">Choisir</a>
+            </div>
+
+            <div class="card popular">
+                <div class="badge">Recommandé</div>
+                <div class="plan-name">BUSINESS</div>
+                <div class="price">990€</div>
+                <div class="period">Paiement unique</div>
+                <ul>
+                    <li>Site Complet (5 pages)</li>
+                    <li>Design Premium</li>
+                    <li><strong>Optimisation Google (SEO)</strong></li>
+                    <li>Lien WhatsApp & Réseaux</li>
+                    <li>Formation (1h)</li>
+                    <li class="no">Boutique en ligne</li>
+                </ul>
+                <a href="mailto:moi@monemail.com" class="btn btn-primary">Commander</a>
+            </div>
+
+            <div class="card">
+                <div class="plan-name">E-COMMERCE</div>
+                <div class="price">1 990€</div>
+                <div class="period">À partir de</div>
+                <ul>
+                    <li>Boutique en ligne complète</li>
+                    <li>Paiement Sécurisé (CB)</li>
+                    <li>Jusqu'à 50 produits</li>
+                    <li>SEO Avancé & Blog</li>
+                    <li>Formation (2h)</li>
+                    <li>Support Prioritaire</li>
+                </ul>
+                <a href="mailto:moi@monemail.com" class="btn btn-outline">Me contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="section-title">Ils nous font confiance</div>
+        <div class="section-subtitle">Découvrez les retours de nos derniers partenaires.</div>
+        
+        <div class="testi-grid">
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"Excellent travail ! Notre nouveau site nous apporte des demandes de devis toutes les semaines. Très pro et réactif."</p>
+                <div class="client-info">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces" alt="Photo client Marc" class="client-avatar">
+                    Marc D. - Artisan Rénov
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"Je recommande vivement. J'avais peur que ce soit compliqué mais tout a été géré de A à Z. Le design est top."</p>
+                <div class="client-info">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=faces" alt="Photo cliente Sophie" class="client-avatar">
+                    Sophie L. - Coach Sportif
+                </div>
+            </div>
+            <div class="testi-card">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"Le site e-commerce fonctionne parfaitement. Le retour sur investissement a été très rapide pour ma boutique."</p>
+                <div class="client-info">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=faces" alt="Photo client Karim" class="client-avatar">
+                    Karim B. - Vendeur en ligne
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-cta" style="margin-bottom: 20px;">
+            <p style="margin-bottom:10px; font-size:1.1rem; color:white;">Vous avez un projet en tête ?</p>
+            <a href="mailto:moi@monemail.com">Discutons-en gratuitement</a>
+        </div>
+        &copy; 2024 Web Design Pro. Tous droits réservés.
+    </footer>
+
+</body>
+</html>
